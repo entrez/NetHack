@@ -404,11 +404,11 @@ HACKINCL = $(INCL)\align.h $(INCL)\artifact.h $(INCL)\artilist.h \
 	$(INCL)\config1.h $(INCL)\context.h $(INCL)\coord.h $(INCL)\decl.h \
 	$(INCL)\display.h $(INCL)\dlb.h $(INCL)\dungeon.h $(INCL)\engrave.h \
 	$(INCL)\extern.h $(INCL)\flag.h $(INCL)\fnamesiz.h $(INCL)\func_tab.h \
-	$(INCL)\global.h $(INCL)\warnings.h $(INCL)\hack.h $(INCL)\lint.h \
-	$(INCL)\mextra.h $(INCL)\mfndpos.h $(INCL)\micro.h $(INCL)\mkroom.h \
-	$(INCL)\monattk.h $(INCL)\mondata.h $(INCL)\monflag.h $(INCL)\monst.h \
-	$(INCL)\monsters.h $(INCL)\obj.h $(INCL)\objects.h $(INCL)\objclass.h \
-	$(INCL)\optlist.h $(INCL)\patchlevel.h $(INCL)\pcconf.h \
+	$(INCL)\global.h $(INCL)\warnings.h $(INCL)\hack.h $(INCL)\jitems.h \
+	$(INCL)\lint.h $(INCL)\mextra.h $(INCL)\mfndpos.h $(INCL)\micro.h \
+	$(INCL)\mkroom.h $(INCL)\monattk.h $(INCL)\mondata.h $(INCL)\monflag.h \
+	$(INCL)\monst.h $(INCL)\monsters.h $(INCL)\obj.h $(INCL)\objects.h \
+	$(INCL)\objclass.h $(INCL)\optlist.h $(INCL)\patchlevel.h $(INCL)\pcconf.h \
 	$(INCL)\permonst.h $(INCL)\prop.h $(INCL)\rect.h $(INCL)\region.h \
 	$(INCL)\sym.h $(INCL)\defsym.h $(INCL)\rm.h $(INCL)\sp_lev.h \
 	$(INCL)\spell.h $(INCL)\sys.h $(INCL)\system.h $(INCL)\tcap.h \
@@ -436,7 +436,7 @@ HACKCSRC = allmain.c alloc.c apply.c artifact.c attrib.c ball.c bones.c \
 	   shk.c shknam.c sit.c sounds.c \
 	   sp_lev.c spell.c steal.c steed.c symbols.c sys.c teleport.c \
 	   timeout.c topten.c track.c trap.c u_init.c uhitm.c utf8map.c \
-	   vault.c version.c vision.c weapon.c were.c wield.c \
+	   vault.c version.c vision.c weapon.c were.c wield.c wish.c \
 	   windows.c wizard.c worm.c worn.c write.c zap.c
 
 
@@ -498,8 +498,8 @@ VOBJ23 = $(O)steed.o    $(O)symbols.o  $(O)sys.o      $(O)teleport.o
 VOBJ24 = $(O)timeout.o  $(O)topten.o   $(O)track.o    $(O)trap.o
 VOBJ25 = $(O)u_init.o   $(O)uhitm.o    $(O)utf8map.o  $(O)vault.o
 VOBJ26 = $(O)vision.o   $(O)weapon.o   $(O)were.o     $(O)wield.o
-VOBJ27 = $(O)windows.o  $(O)wizard.o   $(O)worm.o     $(O)worn.o
-VOBJ28 = $(O)write.o    $(O)zap.o
+VOBJ27 = $(O)wish.o		$(O)windows.o  $(O)wizard.o   $(O)worm.o
+VOBJ28 = $(O)worn.o		$(O)write.o    $(O)zap.o
 
 LUAOBJ = $(O)nhlua.o    $(O)nhlsel.o    $(O)nhlobj.o
 
@@ -2211,7 +2211,7 @@ $(TARGETPFX)o_init.o: o_init.c $(HACK_H)
 $(TARGETPFX)objects.o: objects.c $(CONFIG_H) $(INCL)\obj.h \
 		$(INCL)\prop.h $(INCL)\skills.h $(INCL)\color.h \
 		$(INCL)\objclass.h $(INCL)\defsym.h $(INCL)\objects.h
-$(TARGETPFX)objnam.o: objnam.c $(HACK_H)
+$(TARGETPFX)objnam.o: objnam.c $(HACK_H) $(INCL)\jitems.h
 $(TARGETPFX)options.o: options.c $(CONFIG_H) $(INCL)\objclass.h \
 		$(INCL)\defsym.h $(INCL)\objects.h $(INCL)\flag.h \
 		$(HACK_H) $(INCL)\tcap.h $(INCL)\optlist.h
@@ -2259,6 +2259,7 @@ $(TARGETPFX)vision.o: vision.c $(HACK_H)
 $(TARGETPFX)weapon.o: weapon.c $(HACK_H)
 $(TARGETPFX)were.o: were.c $(HACK_H)
 $(TARGETPFX)wield.o: wield.c $(HACK_H)
+$(TARGETPFX)wish.o: wish.c $(HACK_H) $(INCL)\jitems.h
 $(TARGETPFX)windows.o: windows.c $(HACK_H) $(INCL)\wintty.h
 $(TARGETPFX)wizard.o: wizard.c $(HACK_H)
 $(TARGETPFX)worm.o: worm.c $(HACK_H)

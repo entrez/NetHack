@@ -274,9 +274,9 @@ VOBJ17 = $(O)shk.o      $(O)shknam.o   $(O)sit.o      $(O)sounds.o   $(O)sp_lev.
 VOBJ18 = $(O)spell.o    $(O)steal.o    $(O)steed.o    $(O)symbols.o  $(O)sys.o
 VOBJ19 = $(O)teleport.o $(O)termcap.o  $(O)timeout.o  $(O)topl.o     $(O)topten.o
 VOBJ20 = $(O)track.o    $(O)trap.o     $(O)u_init.o   $(O)uhitm.o    $(O)vault.o
-VOBJ21 = $(O)vision.o   $(O)weapon.o   $(O)were.o     $(O)wield.o    $(O)windows.o
-VOBJ22 = $(O)wintty.o   $(O)wizard.o   $(O)worm.o     $(O)worn.o     $(O)write.o
-VOBJ23 = $(O)zap.o      $(O)light.o    $(O)dlb.o
+VOBJ21 = $(O)vision.o   $(O)weapon.o   $(O)were.o     $(O)wield.o    $(O)wish.o
+VOBJ22 = $(O)windows.o  $(O)wintty.o   $(O)wizard.o   $(O)worm.o     $(O)worn.o
+VOBJ23 = $(O)write.o    $(O)zap.o      $(O)light.o    $(O)dlb.o
 VOBJ24 = $(REGEX)         
 
 SOBJ   = $(O)msdos.o    $(O)pcsys.o    $(O)tty.o	    $(O)unix.o \
@@ -1425,7 +1425,7 @@ $(TARGETPFX)o_init.o: o_init.c $(HACK_H)
 $(TARGETPFX)objects.o: objects.c $(CONFIG_H) ../include/obj.h \
 		../include/prop.h ../include/skills.h ../include/color.h \
 		../include/objclass.h ../include/defsym.h ../include/objects.h
-$(TARGETPFX)objnam.o: objnam.c $(HACK_H)
+$(TARGETPFX)objnam.o: objnam.c $(HACK_H) ../include/jitems.h
 $(TARGETPFX)options.o: options.c $(CONFIG_H) ../include/objclass.h \
 		../include/defsym.h ../include/objects.h ../include/flag.h \
 		$(HACK_H) ../include/tcap.h ../include/optlist.h
@@ -1472,6 +1472,7 @@ $(TARGETPFX)vision.o: vision.c $(HACK_H)
 $(TARGETPFX)weapon.o: weapon.c $(HACK_H)
 $(TARGETPFX)were.o: were.c $(HACK_H)
 $(TARGETPFX)wield.o: wield.c $(HACK_H)
+$(TARGETPFX)wish.o: wish.c $(HACK_H) ../include/jitems.h
 $(TARGETPFX)windows.o: windows.c $(HACK_H) ../include/wintty.h
 $(TARGETPFX)wizard.o: wizard.c $(HACK_H)
 $(TARGETPFX)worm.o: worm.c $(HACK_H)
