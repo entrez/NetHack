@@ -1921,7 +1921,6 @@ extern char *actualoname(struct obj *);
 extern char *bare_artifactname(struct obj *);
 extern char *makeplural(const char *);
 extern char *makesingular(const char *);
-extern struct obj *readobjnam(char *, struct obj *);
 extern int rnd_class(int, int);
 extern const char *suit_simple_name(struct obj *);
 extern const char *cloak_simple_name(struct obj *);
@@ -1934,7 +1933,6 @@ extern const char *mimic_obj_name(struct monst *);
 extern char *safe_qbuf(char *, const char *, const char *, struct obj *,
                        char *(*)(struct obj *), char *(*)(struct obj *),
                        const char *);
-extern int shiny_obj(char);
 
 /* ### options.c ### */
 
@@ -3381,8 +3379,13 @@ extern char *item_what(int);
 extern void destroy_item(int, int);
 extern int destroy_mitem(struct monst *, int, int);
 extern int resist(struct monst *, char, int, int);
-extern void makewish(void);
 extern const char *flash_str(int, boolean);
+
+/* wish.c */
+extern void makewish(void);
+extern struct obj *readobjnam(char *, struct obj *);
+extern boolean wishymatch(const char *, const char *, boolean);
+extern int shiny_obj(char);
 
 #endif /* !MAKEDEFS_C && !MDLIB_C */
 

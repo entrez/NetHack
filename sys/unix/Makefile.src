@@ -493,7 +493,7 @@ HACKCSRC = allmain.c alloc.c apply.c artifact.c attrib.c ball.c bones.c \
 	   sp_lev.c spell.c steal.c steed.c symbols.c sys.c teleport.c \
 	   timeout.c topten.c track.c trap.c u_init.c utf8map.c \
 	   uhitm.c vault.c version.c vision.c weapon.c were.c wield.c \
-	   windows.c wizard.c worm.c worn.c write.c zap.c
+	   wish.c windows.c wizard.c worm.c worn.c write.c zap.c
 
 # all operating-system-dependent .c (for dependencies and such)
 SYSCSRC = ../sys/share/pcmain.c ../sys/share/pcsys.c \
@@ -532,9 +532,9 @@ CSOURCES = $(HACKCSRC) $(SYSCSRC) $(WINCSRC) $(CHAINSRC) $(GENCSRC)
 HACKINCL = align.h artifact.h artilist.h attrib.h botl.h \
 	color.h config.h config1.h context.h coord.h decl.h \
 	display.h dlb.h dungeon.h engrave.h extern.h flag.h fnamesiz.h \
-	func_tab.h global.h warnings.h hack.h lint.h mextra.h mfndpos.h \
-	micro.h mkroom.h monattk.h mondata.h monflag.h monst.h monsters.h \
-	obj.h objects.h objclass.h optlist.h patchlevel.h pcconf.h \
+	func_tab.h global.h warnings.h hack.h jitems.h lint.h mextra.h \
+	mfndpos.h micro.h mkroom.h monattk.h mondata.h monflag.h monst.h \
+	monsters.h obj.h objects.h objclass.h optlist.h patchlevel.h pcconf.h \
 	permonst.h prop.h rect.h region.h sym.h defsym.h rm.h sp_lev.h \
 	spell.h sys.h system.h tcap.h timeout.h tradstdc.h trap.h unixconf.h \
 	vision.h vmsconf.h wintty.h wincurs.h winX.h winprocs.h wintype.h \
@@ -585,9 +585,9 @@ HOBJ = $(TARGETPFX)allmain.o $(TARGETPFX)alloc.o \
 	$(TARGETPFX)topten.o $(TARGETPFX)track.o $(TARGETPFX)trap.o \
 	$(TARGETPFX)u_init.o $(TARGETPFX)uhitm.o $(TARGETPFX)utf8map.o \
 	$(TARGETPFX)vault.o $(TARGETPFX)vision.o $(TARGETPFX)weapon.o \
-	$(TARGETPFX)were.o $(TARGETPFX)wield.o $(TARGETPFX)windows.o \
-	$(TARGETPFX)wizard.o $(TARGETPFX)worm.o $(TARGETPFX)worn.o \
-	$(TARGETPFX)write.o $(TARGETPFX)zap.o \
+	$(TARGETPFX)were.o $(TARGETPFX)wield.o $(TARGETPFX)wish.o \
+	$(TARGETPFX)windows.o $(TARGETPFX)wizard.o $(TARGETPFX)worm.o \
+	$(TARGETPFX)worn.o $(TARGETPFX)write.o $(TARGETPFX)zap.o \
 	$(REGEXOBJ) $(RANDOBJ) $(SYSOBJ) $(WINOBJ) $(HINTOBJ) \
 	$(TARGETPFX)version.o
 #
@@ -1139,7 +1139,7 @@ $(TARGETPFX)o_init.o: o_init.c $(HACK_H)
 $(TARGETPFX)objects.o: objects.c $(CONFIG_H) ../include/obj.h \
 		../include/prop.h ../include/skills.h ../include/color.h \
 		../include/objclass.h ../include/defsym.h ../include/objects.h
-$(TARGETPFX)objnam.o: objnam.c $(HACK_H)
+$(TARGETPFX)objnam.o: objnam.c $(HACK_H)  ../include/jitems.h
 $(TARGETPFX)options.o: options.c $(CONFIG_H) ../include/objclass.h \
 		../include/defsym.h ../include/objects.h ../include/flag.h \
 		$(HACK_H) ../include/tcap.h ../include/optlist.h
@@ -1187,6 +1187,7 @@ $(TARGETPFX)vision.o: vision.c $(HACK_H)
 $(TARGETPFX)weapon.o: weapon.c $(HACK_H)
 $(TARGETPFX)were.o: were.c $(HACK_H)
 $(TARGETPFX)wield.o: wield.c $(HACK_H)
+$(TARGETPFX)wish.o: wish.c $(HACK_H) ../include/jitems.h
 $(TARGETPFX)windows.o: windows.c $(HACK_H) ../include/wintty.h
 $(TARGETPFX)wizard.o: wizard.c $(HACK_H)
 $(TARGETPFX)worm.o: worm.c $(HACK_H)
